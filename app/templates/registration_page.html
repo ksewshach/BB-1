@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<div id="register_container">
+    <h2>Регистрация</h2>
+
+    <form id='registrationForm' action="/register" method="post">
+
+        <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <input type="username" id="username" name="username" required>
+            <div class="error" id="username-error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input class='password-original' type="password" id="password" name="password" required>
+            <div class="error" id="password-error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Повторите пароль:</label>
+            <input class="password-confirm" type="password" id="password" name="password" required>
+            <div class="error" id="password-confirm-error"></div>
+        </div>
+
+        <button type="submit" id="start_jorney_button">Начать приключение!</button>
+    </form>
+</div>
+
+<div id="'message"></div>
+
+<!-- <footer>
+    &copy; 2024 BookBook
+</footer> -->
+
+
+<script src="{{ url_for('static', path='js/registration_script.js') }}"></script>
+
+
+{%endblock%}    
+    

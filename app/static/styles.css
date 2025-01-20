@@ -1,0 +1,214 @@
+a {
+    color: inherit; /* Наследует цвет текста родительского элемента */
+    text-decoration: none;
+  }
+
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* background-image: url('https://i.artfile.ru/2560x1440_1531954_[www.ArtFile.ru].jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+    color: #333;
+    background-color: beige;
+}
+
+
+/* 
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+} */
+
+
+h1 {
+    margin: 0;
+}
+
+ 
+header {
+    background-image: radial-gradient(circle at 20% 50%, #ff8800, rgb(209, 0, 17), #333);
+    top: 0;
+    left: 0;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+/* main {
+    padding: 20px;
+} */
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    width: 70%;
+    max-width: 1000px;
+}
+
+
+#about {
+    text-align: center;   
+}
+
+#button1 {
+    background-color: rgb(255, 136, 0); 
+    color: white;
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+#button2 {
+    background-color: rgb(209, 0, 17);
+    color: white;
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#button_div1 {
+    text-align: center;
+    padding-bottom: 13px;
+}
+#button_div2 {
+    text-align: center;
+
+}
+
+#button1:hover {
+    background-image: url('https://img.goodfon.ru/original/640x480/2/2f/kosmos-planety-zvezdy-siyanie-5030.jpg');
+    background-size: 100%;
+    background-position-y: 11%;
+    max-width: 300px;
+    box-shadow: #000000;
+    text-shadow: 0 0 8px #000000;
+}
+#button2:hover {
+    background-image: url('https://getwallpapers.com/wallpaper/small-retina/a/1/e/42534.jpg');
+    background-size: 100%;
+    background-position-y: 40%;
+    max-width: 300px;
+    box-shadow: #000000;
+    text-shadow: 0 0 8px #000000;
+}
+
+
+.container_text {
+    margin: 2em;
+}
+
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 4%
+}
+
+
+#continue_jorney_button {
+    font-weight: bold;
+    background-image: url('https://img.goodfon.ru/original/640x480/2/2f/kosmos-planety-zvezdy-siyanie-5030.jpg');
+    background-size: 100%;
+    
+    background-position-y: 90%;
+    color: rgb(0, 0, 0);
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 66%;
+    height: 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 8px #000000;
+}
+
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+.lower-p {
+    text-align: center;
+
+}
+/* Блок для входа в систему */
+
+
+#register_container {
+    background-color: #fff;
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20em;
+}
+
+
+#start_jorney_button {
+    font-weight: bold;
+    background-image: url('https://getwallpapers.com/wallpaper/small-retina/a/1/e/42534.jpg');
+    background-size: 100%;
+    background-position-y: 90%;
+    color: rgb(0, 0, 0);
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 66%;
+    height: 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 8px #000000;
+}
+
+

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+    <div class="container_text">
+        <section>
+            <h2 id="about">Ничего лишнего, только личное. <br> Присоединяйтесь к лучшему сервису для написания сценариев!</h2>
+            <p id="about">	<!-- &#127757; !--> - С нами уже более 1 млн авторов по всему миру!</p>
+            <p id="about"> <!-- &#127984; !--> - Пишите истории. Создавайте вселенные. Заявляйте о себе.</p>
+        </section>        
+    </div>
+
+
+        <div id="button_div1">
+            <button id='button1' type="submit"><h3>Войти</h3></button>
+        </div>
+        <div id="button_div2">
+            <button id='button2' type="submit">
+                <h3>Зарегистрироваться</h3></button>
+        </div>
+
+
+
+
+<!-- 
+    <div id="signin_container">
+        <h2>Вход в систему</h2>
+        <form action="">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error" id="password-error"></div>
+            </div>
+            <button type="submit" id="continue_jorney_button">Продолжить приключение!</button>
+        </form>
+    </div>
+ -->
+
+<!-- 
+    <footer>
+        &copy; 2025 BookBook
+    </footer>
+ -->
+
+
+    <script>
+
+        const btnSignIn = document.getElementById('button1');
+        btnSignIn.addEventListener('click', function(){
+            window.location.href = '/login'
+        });
+        const btnSignUp = document.getElementById('button2');
+        btnSignUp.addEventListener('click', function(){
+            window.location.href = '/register'
+        });
+    </script>
+    <!-- <script src="static/login_script.js"></script>  -->
+
+    {%endblock%}    
+    
