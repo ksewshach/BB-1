@@ -58,7 +58,7 @@ if (isValid) {
             data[key] = value;
         });
 
-        fetch('/register', {
+        fetch('/api/v1/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

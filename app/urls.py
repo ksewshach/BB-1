@@ -3,6 +3,8 @@
 from fastapi import Request, APIRouter
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from routers import create_user
+from schemas import UnitCreateSchema, UnitUpdateSchema, UserCreateSchema, UserUpdateSchema, UserDeleteSchema
 
 template = Jinja2Templates(directory='templates')
 
@@ -31,3 +33,7 @@ def register(request: Request):
         request=request,
         name='registration_page.html',
     )
+    
+@user_url.post(path='/register')
+def register(request: Request):
+    pass
