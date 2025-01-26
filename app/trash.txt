@@ -1,4 +1,13 @@
 
+// // Проверка email (можно добавить более строгую валидацию)
+// if (email.trim() === "" || !email.includes("@")) {
+//     document.getElementById('email-error').textContent = "Пожалуйста, введите корректный email.";
+//     isValid = false;
+// } else {
+//     document.getElementById('email-error').textContent = "";
+// }
+
+
 
         // Добавляем обработчик события для формы
         const form = document.querySelector('form');
@@ -55,7 +64,23 @@
 
 
 
+// if (passwordOriginal != password_Confirm) {
+//     const messageDiv = document.getElementById('message');
+//     messageDiv.textContent = 'Произошла ошибка: ' + error;
+// }
 
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input class='password-original' type="password" id="password" name="password" required>
+            <div class="error" id="password-error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Повторите пароль:</label>
+            <input class="password-confirm" type="password" id="password" name="password" required>
+            <div class="error" id="password-confirm-error"></div>
+        </div>
 
 
 

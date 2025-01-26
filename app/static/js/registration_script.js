@@ -1,20 +1,12 @@
 
 
-// password = document.getElementsByClassName('password-original');
-// passwordConfirm = document.getElementsByClassName('password-confirm');
+password = document.getElementById('password-original').value;
+passwordConfirm = document.getElementById('password-confirm').value;
 
-// if (passwordOriginal != password_Confirm) {
-//     const messageDiv = document.getElementById('message');
-//     messageDiv.textContent = 'Произошла ошибка: ' + error;
-// }
+username = document.getElementById('username').value;
 
-
-
-
-// Валидация введенных данных
 let isValid = true;
 
-// Проверка имени пользователя (можно добавить более строгую валидацию)
 if (username.trim() === "") {
     document.getElementById('username-error').textContent = "Пожалуйста, введите имя пользователя.";
     isValid = false;
@@ -22,13 +14,6 @@ if (username.trim() === "") {
     document.getElementById('username-error').textContent = "";
 }
 
-// // Проверка email (можно добавить более строгую валидацию)
-// if (email.trim() === "" || !email.includes("@")) {
-//     document.getElementById('email-error').textContent = "Пожалуйста, введите корректный email.";
-//     isValid = false;
-// } else {
-//     document.getElementById('email-error').textContent = "";
-// }
 
 // Проверка пароля
 if (password.trim() === "" || password.length < 4) {
@@ -37,7 +22,6 @@ if (password.trim() === "" || password.length < 4) {
 } else {
     document.getElementById('password-error').textContent = "";
 }
-
 // Проверка подтверждения пароля
 if (passwordConfirm.trim() === "" || passwordConfirm !== password) {
     document.getElementById('password-confirm-error').textContent = "Пароли не совпадают.";
@@ -45,7 +29,8 @@ if (passwordConfirm.trim() === "" || passwordConfirm !== password) {
 } else {
     document.getElementById('password-confirm-error').textContent = "";
 }
-
+alert(username)
+alert(password)
 // Если форма прошла проверку, отправляем данные на сервер
 if (isValid) {
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
