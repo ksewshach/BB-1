@@ -29,8 +29,8 @@ if (passwordConfirm.trim() === "" || passwordConfirm !== password) {
 } else {
     document.getElementById('password-confirm-error').textContent = "";
 }
-alert(username)
-alert(password)
+// alert(username)
+// alert(password)
 // Если форма прошла проверку, отправляем данные на сервер
 if (isValid) {
     document.getElementById('registrationForm').addEventListener('submit', function(event) {

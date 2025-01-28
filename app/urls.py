@@ -3,8 +3,6 @@
 from fastapi import Request, APIRouter
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from routers import create_user
-from schemas import UnitCreateSchema, UnitUpdateSchema, UserCreateSchema, UserUpdateSchema, UserDeleteSchema
 
 template = Jinja2Templates(directory='templates')
 
@@ -12,6 +10,7 @@ template = Jinja2Templates(directory='templates')
 # URL-ы ПОЛЬЗОВАТЕЛЕЙ
 
 user_url = APIRouter(tags=["user"]) # чтобы красиво отображались в категории в доксе вместо default сверзу
+
 
 @user_url.get(path='/')
 def index(request: Request):
@@ -33,7 +32,19 @@ def register(request: Request):
         request=request,
         name='registration_page.html',
     )
-    
+
 @user_url.post(path='/register')
 def register(request: Request):
     pass
+
+@user_url.get(path='/my_projects')
+def register(request: Request):
+    return template.TemplateResponse(
+        request=request,
+        name='my_projects.html',
+    )
+
+
+
+# # URL-ы ЕДИНИЦ
+# user_url = APIRouter(tags=["user"])

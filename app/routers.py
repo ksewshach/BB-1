@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, Request
 from schemas import UnitCreateSchema, UnitUpdateSchema, UserCreateSchema, UserUpdateSchema, UserDeleteSchema
-from models import UnitModel, UserDB
+from models import UnitDB, UserDB
 from sqlalchemy.orm import Session
 from database import engine
 from sqlalchemy import select, insert
@@ -77,7 +77,7 @@ unit_router = APIRouter(prefix='/api/v1/units') # префикс для разр
 @unit_router.post('/create_unit')
 def create_unit(request: Request, unit: UnitCreateSchema):
     session = Session(engine) # экземпляр класса, который позволяет подключиться к БД
-    stmt = insert(UnitModel).values(title=unit.title,  # insert импортируется из sqlalchemy,
+    stmt = insert(UnitDB).values(title=unit.title,  # insert импортируется из sqlalchemy,
                                     description=unit.description) # нельзя чтобы в строке не было больше 80 символов ПРАВИЛО ХОРОШЕГО ТОНА, можно включить в настройках)
     session.execute(stmt)
     session.commit() #сделалит сохранение, без КОММИТА не сохранится! как dump в джсоне
@@ -88,7 +88,7 @@ def create_unit(request: Request, unit: UnitCreateSchema):
 @unit_router.get('/get_unit')
 def get_unit(request: Request): #Этот реквест нужно обязательно прописывать, в некоторых гайдах его нет
     session = Session(engine)# экземпляр класса, отвечающий за соединение с базой данных
-    stmt = select(UnitModel) # (sql запрос по форме запросить таблицу unit модел)
+    stmt = select(UnitDB) # (sql запрос по форме запросить таблицу unit модел)
     object_db = session.execute(stmt) #формируется скл объект, получаем объект с базы данных (всю табличку дёрнет, получим объект но работать с ним не сможем, надо преобразовать)
     units:list = object_db.scalars().all() # скалларс преобразует всё это в понятный нам тип список, по-другому бы не получилось работать с ним
     session.close()
@@ -99,7 +99,7 @@ def get_unit(request: Request): #Этот реквест нужно обязат
 @unit_router.put('/update_unit') # можно на один адрес разные методы накидывать
 def update_unit(request: Request, unit_title: str, unit_update: UnitUpdateSchema): # unit_id:int получаем айди к изменению у пользователя, 
     session = Session(engine)
-    stmt = select(UnitModel).where(UnitModel.title==unit_title) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику
+    stmt = select(UnitDB).where(UnitDB.title==unit_title) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику
     object_db = session.execute(stmt)
     print(object_db)
     unit = object_db.scalars().first()
@@ -113,7 +113,7 @@ def update_unit(request: Request, unit_title: str, unit_update: UnitUpdateSchema
 @unit_router.delete('/delete_unit/')
 def delete_unit(request: Request, unit_title: str):
     session = Session(engine)
-    stmt = select(UnitModel).where(UnitModel.title==unit_title) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику
+    stmt = select(UnitDB).where(UnitDB.title==unit_title) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику
     object_db = session.execute(stmt)
     unit = object_db.scalar() # .one() один объект из списка извлекает
     session.delete(unit)

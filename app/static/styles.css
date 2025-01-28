@@ -1,18 +1,110 @@
+/* --------------- ЭЛЕМЕНТЫ СТРАНИЦЫ --------------- */
+
 a {
     color: inherit; /* Наследует цвет текста родительского элемента */
     text-decoration: none;
   }
 
+#about {
+    text-align: center;   
+}
 
 body {
+    padding-top: 50px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* background-image: url('https://i.artfile.ru/2560x1440_1531954_[www.ArtFile.ru].jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; */
-    color: #333;
+    color:rgb(0, 0, 0);
     background-color: beige;
 }
+
+#body_base {
+    padding-top: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url('https://i.postimg.cc/SQBW2pPw/1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color:rgb(0, 0, 0)
+}
+
+h1 {
+    margin: 0;
+}
+
+#header_base {
+    background-image: radial-gradient(circle at 20% 50%, #ff8800, rgb(209, 0, 17), #333);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 1px 10px #000000;
+}
+
+.header_navbar {
+    background-image: radial-gradient(circle at 20% 50%, #ff8800, rgb(209, 0, 17), #333);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 17px 30px;
+    justify-content: space-between;
+    display: flex;
+    box-shadow: 0 1px 10px #000000;
+}
+
+input[type="username"],
+input[type="password"],
+input[type="title"], 
+input[type="description"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.logo {
+    font-size: large;
+    font-weight: 900;
+    transition: .3s;
+}
+
+.logo:hover {
+    /* transform: scaleX(2); */
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
+.header_navbar nav ul li {
+    position: relative;
+    float: left;
+}
+
+.header_navbar nav ul li a {
+    padding: 0.8em;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
 
 
 /* 
@@ -28,64 +120,57 @@ footer {
 } */
 
 
-h1 {
-    margin: 0;
+
+/* --------------- КОНТЕЙНЕРЫ/КЛАССЫ --------------- */
+
+.container_text {
+    margin: 2em;
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(255, 255, 255) 1px 0px 17px;
 }
 
- 
-header {
-    background-image: radial-gradient(circle at 20% 50%, #ff8800, rgb(209, 0, 17), #333);
-    top: 0;
-    left: 0;
-    color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    text-align: center;
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-
-img {
-    max-width: 100%;
-    height: auto;
+.form-group {
+    margin-bottom: 15px;
 }
 
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-}
-
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-
-/* main {
-    padding: 20px;
-} */
-
-section {
+#new_project_div {
     background-color: #fff;
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20em;
+}
+
+#register_container {
+    background-color: #fff;
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20em;
+}
+
+#section_about {
+    background-color: rgb(255, 255, 255, 0.0);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.0);
     margin: auto;
     width: 70%;
     max-width: 1000px;
 }
 
 
-#about {
-    text-align: center;   
-}
+
+/* --------------- КНОПКИ --------------- */
 
 #button1 {
     background-color: rgb(255, 136, 0); 
@@ -120,95 +205,97 @@ section {
 }
 
 #button1:hover {
-    background-image: url('https://img.goodfon.ru/original/640x480/2/2f/kosmos-planety-zvezdy-siyanie-5030.jpg');
+    background-image: url('https://i.postimg.cc/4x5tSH3g/2.jpg');
+    background-size: 100%;
+    background-position-y: 18%;
+    box-shadow: #000000;
+    text-shadow: 0 0 8px #000000;
+}
+#button2:hover {
+    background-image: url('https://i.postimg.cc/pXKKK6by/42534.jpg');
+    background-size: 100%;
+    background-position-y: 40%;
+    box-shadow: #000000;
+    text-shadow: 0 0 8px #000000;
+}
+
+#continue_jorney_button {
+    font-weight: bold;
+    background-image: url('https://i.postimg.cc/4x5tSH3g/2.jpg');
+    background-size: 100%;
+    background-position-y: 90%;
+    color: rgb(0, 0, 0);
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 66%;
+    height: 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 8px #000000;
+}
+
+
+
+#new_project_button:hover {
+    background-image: url('https://i.postimg.cc/4x5tSH3g/2.jpg');
     background-size: 100%;
     background-position-y: 11%;
     max-width: 300px;
     box-shadow: #000000;
     text-shadow: 0 0 8px #000000;
 }
-#button2:hover {
-    background-image: url('https://getwallpapers.com/wallpaper/small-retina/a/1/e/42534.jpg');
+
+#new_project_button {
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    background-color: rgb(255, 136, 0); 
+    font-weight: bold;
+    color: white;
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+.start_button {
+    margin-top: 12px;
+    font-size: inherit;
+    font-weight: bold;
+    color: white;
+    padding: 3px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    height: 45px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+#start_jorney_button {
+    background-color: rgb(209, 0, 17);
+    color: white;
+}
+
+#start_jorney_button:hover {
+    background-image: url('https://i.postimg.cc/pXKKK6by/42534.jpg');
     background-size: 100%;
     background-position-y: 40%;
-    max-width: 300px;
     box-shadow: #000000;
     text-shadow: 0 0 8px #000000;
 }
 
 
-.container_text {
-    margin: 2em;
-}
 
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    margin-top: 4%
-}
 
 
-#continue_jorney_button {
-    font-weight: bold;
-    background-image: url('https://img.goodfon.ru/original/640x480/2/2f/kosmos-planety-zvezdy-siyanie-5030.jpg');
-    background-size: 100%;
-    
-    background-position-y: 90%;
-    color: rgb(0, 0, 0);
-    padding: 3px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 66%;
-    height: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    text-shadow: 0 0 8px #000000;
-}
-
-
-.error {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-
-.lower-p {
+/* #new_project_button_div {
     text-align: center;
-
-}
-/* Блок для входа в систему */
-
-
-#register_container {
-    background-color: #fff;
-    padding: 2em;
-    margin: 2em auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 20em;
-}
-
-
-#start_jorney_button {
-    font-weight: bold;
-    background-image: url('https://getwallpapers.com/wallpaper/small-retina/a/1/e/42534.jpg');
-    background-size: 100%;
-    background-position-y: 90%;
-    color: rgb(0, 0, 0);
-    padding: 3px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 66%;
-    height: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    text-shadow: 0 0 8px #000000;
-}
-
-
+    padding-bottom: 13px;
+} */

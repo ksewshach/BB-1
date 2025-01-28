@@ -1,2 +1,1 @@
-alert('Во')
-console.log('Во')
+console.log('Скрипт подключен.')

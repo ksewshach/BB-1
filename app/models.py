@@ -15,7 +15,7 @@ class UserDB(Base):
     password: Mapped[str] = mapped_column(String(255), nullable=False)
 
 
-class UnitModel(Base):
+class UnitDB(Base):
 
     __tablename__ = "unit_table"
 

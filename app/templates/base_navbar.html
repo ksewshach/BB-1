@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+
+</head>
+<body>
+
+<header class="header_navbar">
+    <a href="#" class='logo'>BookBook</a>
+    <nav>
+        <ul class="navbar">
+            <li><a href="">заметки</a></li>
+            <li><a href="">проекты</a></li>
+            <li><a href="">персонажи</a></li>
+            <li><a href="">локации</a></li>
+            <!-- <li><a href="">выйти</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+{% block content %}
+{% endblock %}
