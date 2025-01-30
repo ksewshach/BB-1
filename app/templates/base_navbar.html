@@ -9,8 +9,31 @@
 </head>
 <body>
 
+
+
+
+
+
+<!-- ОТКРОЙ CHATGPT ПРО НАСЛЕДОВАНИЕ JS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <header class="header_navbar">
-    <a href="#" class='logo'>BookBook</a>
+    <button class='logo'>BookBook</button> 
     <nav>
         <ul class="navbar">
             <li><a href="">заметки</a></li>
@@ -22,5 +45,39 @@
     </nav>
 </header>
 
+
+<div class='popup_about' style='display:none; text-align:center;background-color: #fff; padding:2em; margin: auto; position: fixed; top:0;right:0;bottom:0;left:0; border-radius:5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); width:20em; height: 16.5em; z-index:2'>
+
+    <button class="button_close" style="border:none; background:none;cursor:pointer; position:absolute;right:15px;top:15px; font-size:inherit; font-family:inherit; opacity:0.5;">х</button>
+
+    <h4>Спасибо, что пользуетесь моим сервисом! &#60;3 </h4>
+    <p>Версия приложения: BookBook 0.1</p>
+    <h4>Связаться со мной:</h4>
+
+    <button id='button2' style="font-size: inherit; height:2em">
+        <a href='https://vk.com/caught_ufo'>vk.com/caught_ufo</a>
+    </button>
+
+    <p>От всего сердца желаю вам успехов на творческом пути!</p>
+
+</div>
+
+<div class='black_bg'style='display:none; position:absolute;top:0;left:0;width:100%;height:100%;background-color: black;opacity:0.5; z-index: 0;'></div>
+
+
 {% block content %}
+{% endblock %}
+
+{% block script %}
+<script>
+    document.querySelector('.logo').addEventListener('click', function(){
+        document.querySelector('.popup_about').style.display = 'block';
+        document.querySelector('.black_bg').style.display = 'block';
+    })
+    document.querySelector('.button_close').addEventListener('click', function(){
+        document.querySelector('.popup_about').style.display = 'none';
+        document.querySelector('.black_bg').style.display = 'none';
+    })
+</script>
+<!-- SCRIPT с выведением инфы и ссилок по нажатию на логотип -->
 {% endblock %}

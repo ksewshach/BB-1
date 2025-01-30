@@ -4,7 +4,7 @@
 
 {% block content %}
 
-
+<!-- ПОГУГЛИТЬ КАК С НАСЛЕДОВАНИЕМ ШАБЛОНА НАСЛЕДОВАТЬ КУСОК КОДА!!!-->
  
     <h4>План:</h4>
     <p>-После заполнения формы создаётся новая таблица
@@ -39,8 +39,10 @@
     
 
 </body>
-<script src="{{ url_for('static', path='js/new_project_script.js') }}"></script>
 
 
+<script src="{{ url_for('static', path='js/new_project_script.js') }}">
+</script>
 {% endblock %}
+
 
