@@ -29,15 +29,16 @@ if (passwordConfirm.trim() === "" || passwordConfirm !== password) {
 } else {
     document.getElementById('password-confirm-error').textContent = "";
 }
-// alert(username)
-// alert(password)
+
 // Если форма прошла проверку, отправляем данные на сервер
-if (isValid) {
+// if (isValid) {
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
         const data = {};
+        
+        console.log(data)
 
         formData.forEach((value, key) => {
             data[key] = value;
@@ -64,7 +65,7 @@ if (isValid) {
         });
     });
         alert("Форма отправлена");
-    }
+//    }
 
 
         /*
