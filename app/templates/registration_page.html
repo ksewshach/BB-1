@@ -6,27 +6,29 @@
 <div id="register_container">
     <h2>Регистрация</h2>
 
-    <form id='registrationForm' action="/register" method="post">
+<!--  -->
+    
+    <form id='registrationForm' action='/register' method="post">
 
         <div class="form-group">
             <label for="username">Имя пользователя:</label>
-            <input type="username" id="username" name="username" required>
+            <input type="username" name="username" required>
             <div class="error" id="username-error"></div>
         </div>
 
         <div class="form-group">
             <label for="password">Пароль:</label>
-            <input class='password' type="password" id="password-original" name="password" required>
+            <input class='password' type="password" name="password" required>
             <div class="error" id="password-error"></div>
         </div>
 
         <div class="form-group">
             <label for="password">Повторите пароль:</label>
-            <input class='password'type="password" id="password-confirm" name="password" required>
+            <input class='password' type="password" name="password-confirm" required>
             <div class="error" id="password-confirm-error"></div>
         </div>
 
-        <button type="submit" class='start_button'id="start_jorney_button">Начать приключение!</button>
+        <button type="submit" class='start_button' id="start_jorney_button">Начать приключение!</button>
     </form>
 </div>
 

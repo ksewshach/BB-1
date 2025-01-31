@@ -12,10 +12,10 @@ from sqlalchemy import select, insert
 user_router = APIRouter(prefix='/api/v1/users')
 
 
-@user_router.post('/register')
+@user_router.post('/register/')
 def create_user(request: Request, user: UserCreateSchema):
     new_user = UserDB(
-        id = user.id,
+        # id = user.id,
         username = user.username,
         password = user.password,
     )
@@ -27,11 +27,10 @@ def create_user(request: Request, user: UserCreateSchema):
     # session.execute(stmt)
     session.commit()
     session.close()
-    print(user)
     return {'user': user}
 
 
-@user_router.get('/get_users')
+@user_router.get('/get_users/')
 def get_users_list(request: Request): #Этот реквест нужно обязательно прописывать, в некоторых гайдах его нет
     session = Session(engine)# экземпляр класса, отвечающий за соединение с базой данных
     stmt = select(UserDB) # (sql запрос по форме запросить таблицу unit модел)
@@ -41,7 +40,7 @@ def get_users_list(request: Request): #Этот реквест нужно обя
     return users
 
 
-@user_router.put('/update_user') # можно на один адрес разные методы накидывать
+@user_router.put('/update_user/') # можно на один адрес разные методы накидывать
 def update_user(request: Request, user_id: int, user_update: UserUpdateSchema): # unit_id:int получаем айди к изменению у пользователя, 
     session = Session(engine)
     stmt = select(UserDB).where(UserDB.id==user_id) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику
@@ -56,7 +55,7 @@ def update_user(request: Request, user_id: int, user_update: UserUpdateSchema): 
     return user_update
 
 
-@user_router.delete('/delete_user')
+@user_router.delete('/delete_user/')
 def delete_user(request: Request, user_id: int):
     session = Session(engine)
     stmt = select(UserDB).where(UserDB.id==user_id) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику
@@ -74,7 +73,7 @@ def delete_user(request: Request, user_id: int):
 unit_router = APIRouter(prefix='/api/v1/units') # префикс для разработчика чисто, чтобы понимали что тут находится какой-то интерфейс 
 
 
-@unit_router.post('/create_unit')
+@unit_router.post('/create_unit/')
 def create_unit(request: Request, unit: UnitCreateSchema):
     session = Session(engine) # экземпляр класса, который позволяет подключиться к БД
     stmt = insert(UnitDB).values(title=unit.title,  # insert импортируется из sqlalchemy,
@@ -85,7 +84,7 @@ def create_unit(request: Request, unit: UnitCreateSchema):
     return unit
 
 
-@unit_router.get('/get_unit')
+@unit_router.get('/get_unit/')
 def get_unit(request: Request): #Этот реквест нужно обязательно прописывать, в некоторых гайдах его нет
     session = Session(engine)# экземпляр класса, отвечающий за соединение с базой данных
     stmt = select(UnitDB) # (sql запрос по форме запросить таблицу unit модел)
@@ -96,7 +95,7 @@ def get_unit(request: Request): #Этот реквест нужно обязат
 
 
 
-@unit_router.put('/update_unit') # можно на один адрес разные методы накидывать
+@unit_router.put('/update_unit/') # можно на один адрес разные методы накидывать
 def update_unit(request: Request, unit_title: str, unit_update: UnitUpdateSchema): # unit_id:int получаем айди к изменению у пользователя, 
     session = Session(engine)
     stmt = select(UnitDB).where(UnitDB.title==unit_title) # формируем запрос: мы хотим получить из таблички таск модел запись по айдишнику

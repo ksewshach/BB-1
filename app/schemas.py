@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class UserCreateSchema(BaseModel):
     username: str
     password: str
-    id: int
+    # id: int
     
 class UserUpdateSchema(BaseModel):
     username: str
