@@ -7,7 +7,6 @@ newProjectButton.addEventListener('click', function(){
 
 let isValid = True;
 
-
 if (title.trim() === "") {
     document.getElementById('title-error').textContent = "Пожалуйста, введите название проекта.";
     isValid = false;

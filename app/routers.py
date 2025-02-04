@@ -6,25 +6,28 @@ from models import UnitDB, UserDB
 from sqlalchemy.orm import Session
 from database import engine
 from sqlalchemy import select, insert
+import random
+import sqlite3
 
 # РОУТЕРЫ ДЛЯ СПИСКА ПОЛЬЗОВАТЕЛЕЙ (логины и пароли)
 
 user_router = APIRouter(prefix='/api/v1/users')
 
-
 @user_router.post('/register/')
 def create_user(request: Request, user: UserCreateSchema):
+    def generate_unique_id(session):
+        while True:
+            user_id = random.randint(100000, 999999)
+            if session.scalar(select(UserDB).where(UserDB.id == user_id)) is None:
+                return user_id
+    session = Session(engine)
+    print(f"Сгенерирован ID: {id}")  
     new_user = UserDB(
-        # id = user.id,
+        id = generate_unique_id(session),
         username = user.username,
         password = user.password,
     )
-    session = Session(engine)
     session.add(new_user)
-    # stmt = insert(UserDB).values(username=user.username,
-    #                                  password=user.password,
-    #                                  id=user.id)
-    # session.execute(stmt)
     session.commit()
     session.close()
     return {'user': user}
@@ -75,6 +78,18 @@ unit_router = APIRouter(prefix='/api/v1/units') # префикс для разр
 
 @unit_router.post('/create_unit/')
 def create_unit(request: Request, unit: UnitCreateSchema):
+    
+    """
+        def generate_unique_id(session):
+        while True:
+            user_id = random.randint(100000, 999999)
+            if session.scalar(select(UserDB).where(UserDB.id == user_id)) is None:
+                return user_id
+    
+    id = generate_unique_id(session)
+    print(f"Сгенерирован ID: {id}")
+    """
+    
     session = Session(engine) # экземпляр класса, который позволяет подключиться к БД
     stmt = insert(UnitDB).values(title=unit.title,  # insert импортируется из sqlalchemy,
                                     description=unit.description) # нельзя чтобы в строке не было больше 80 символов ПРАВИЛО ХОРОШЕГО ТОНА, можно включить в настройках)

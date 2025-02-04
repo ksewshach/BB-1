@@ -1,4 +1,193 @@
 
+    # (...primary_key=True, index=True - индекс вроде для последующего поиска? Но времени и места тратится на него немало. Говорят.)
+
+        /* const data = {"username": username, "password": password};
+        fetch('http://127.0.0.1:8000/api/v1/users/register/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        // alert("Форма отправлена");
+         */
+
+
+
+  # Создаем нового пользователя
+        new_user = User(
+            username=user.username,
+            password=user.password,  # TODO: Хэшировать пароль
+            random_id=generate_random_id()
+        )
+
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)  # Обновляем объект из базы данных
+        return {"message": "Пользователь успешно зарегистрирован", "id": new_user.id, "username": new_user.username} # Возвращаем id
+
+
+---------------- СОЗДАВАЛКА ТАБЛИЦЫ --------------------------------/
+
+conn = sqlite3.connect('db.sqlite')
+cursor = conn.cursor()
+cursor.execute('''
+                CREATE TABLE users (
+                    reg_number INTEGER PRIMARY KEY,
+                    id INTEGER NOT NULL,
+                    username TEXT NOT NULL,
+                    password TEXT NOT NULL
+                    
+                )
+            ''')
+conn.commit()
+conn.close()
+
+---------------- СОЗДАВАЛКА ТАБЛИЦЫ --------------------------------/
+
+
+
+// Если форма прошла проверку, отправляем данные на сервер
+if (isValid) {
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {};
+        
+        alert(data)
+
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        fetch('/api/v1/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = result.message;
+            if (result.success) {
+                form.reset();
+            }
+        })
+        .catch(error => {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = 'Произошла ошибка: ' + error;
+        });
+    });
+        alert("Форма отправлена");
+}else {
+    event.preventDefault();
+    alert('Поздравляем, вы бубун.')
+}
+
+*/
+
+""" sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.id
+[SQL: INSERT INTO users (id, username, password) VALUES (?, ?, ?)]
+[parameters: (0, 'Ксюша', '12345')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) """
+# sqlite3.IntegrityError: UNIQUE constraint failed: users.id
+# 127.0.0.1:61671 - "←[1mPOST /api/v1/users/register/ HTTP/1.1←[0m" ←[91m500 Internal Server Error←[0m
+
+
+
+
+
+
+
+
+
+
+
+primary_key=True, autoincrement=True
+
+
+ if session.query(UserDB).filter(UserDB.id == user_id).first() is None:
+    
+
+primary_key=True, autoincrement=False
+
+     
+    def generate_random_id():
+        """Функция, которая возвращает случайный id."""
+        import random
+        return random.randint(1000, 9999)
+
+    def create_user(username, password):
+       # 1. Получение ID
+        user_id = generate_random_id()
+
+       # 2. Присваивание значения параметру id, и, одновременно, использование переменной:
+        user = {"id": user_id, "username": username, "password": password}
+
+        return user
+    
+
+     def generate_random_id():
+    """Функция, которая возвращает случайный id."""
+    import random
+    return random.randint(1000, 9999)
+
+def create_user(username, password):
+    # 1. Получение ID
+    user_id = generate_random_id()
+
+    # 2. Использование переменной: присваиваем значение id параметру
+    user = {"id": user_id, "username": username, "password": password}
+
+    # ... далее мы делаем что-то с этим словарем user
+
+    return user
+
+# Пример вызова:
+new_user = create_user("testuser", "testpass")
+print(new_user)
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+        # reg_number = user.reg_number,
+
+
+@user_router.post('/register/')
+def create_user(request: Request, user: UserCreateSchema):
+    new_user = UserDB(
+        reg_number = user.reg_number,
+        username = user.username,
+        password = user.password,
+        id = user.id,
+    )
+    session = Session(engine)
+    session.add(new_user)
+    # stmt = insert(UserDB).values(username=user.username,
+    #                                  password=user.password,
+    #                                  id=user.id)
+    # session.execute(stmt)
+    session.commit()
+    session.close()
+    return {'user': user}
+
+
 
 style="font-size: inherit; background-color: rgb(209, 0, 17); color: white; border: none;border-radius: 3px;cursor: pointer;">
 

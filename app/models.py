@@ -1,17 +1,15 @@
 from database import Base
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String
-
-
+from sqlalchemy import String, Integer
 
 
 class UserDB(Base):
 
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True, index=True) # праймари ки - генерируется сам
-    username: Mapped[str] = mapped_column(String(20), nullable=False)
-    # email: Mapped[str]
+    reg_number: Mapped[int] = mapped_column(primary_key=True, index=True) # праймари ки - генерируется сам
+    id: Mapped[int] = mapped_column(Integer)
+    username: Mapped[str] = mapped_column(String(25), nullable=False)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
 
 
@@ -23,7 +21,5 @@ class UnitDB(Base):
     title: Mapped[str]
     description: Mapped[str]
     # status: Mapped[bool] = mapped_column(default=False)
-
-    # (...primary_key=True, index=True - индекс вроде для последующего поиска? Но времени и места тратится на него немало. Говорят.)
 
 

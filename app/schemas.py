@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 
 # СХЕМЫ ПОЛЬЗОВАТЕЛЕЙ
+# По ним мы принимаем данные у пользователя с формы
 
 class UserCreateSchema(BaseModel):
     username: str
     password: str
-    # id: int
-    
+
 class UserUpdateSchema(BaseModel):
     username: str
     password: str

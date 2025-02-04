@@ -1,3 +1,4 @@
+
 /* --------------- ЭЛЕМЕНТЫ СТРАНИЦЫ --------------- */
 
 a {
@@ -92,6 +93,12 @@ label {
     cursor: pointer;
 }
 
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 .header_navbar nav ul li {
     position: relative;
     float: left;
@@ -129,12 +136,6 @@ footer {
     margin: 2em;
     color: rgb(0, 0, 0);
     text-shadow: rgb(255, 255, 255) 1px 0px 17px;
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
 }
 
 .form-group {
@@ -299,8 +300,3 @@ footer {
     box-shadow: #000000;
     text-shadow: 0 0 8px #000000;
 }
-
-/* #new_project_button_div {
-    text-align: center;
-    padding-bottom: 13px;
-} */
