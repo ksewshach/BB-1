@@ -9,7 +9,7 @@ form.addEventListener('submit', async function(event){
     // ---------- ВАЛИДАЦИЯ ----------
     let isValid = true;
 
-    // Проверка имени пользователя
+    // Проверка пользователя
     if (username.trim() === "") {
         document.getElementById('username-error').textContent = "Пожалуйста, введите имя пользователя.";
         isValid = false;
@@ -40,23 +40,14 @@ form.addEventListener('submit', async function(event){
 
     // ---------- ОТПРАВКА НА СЕРВЕР ----------
     if (isValid) {
-        try {
-            const response = await fetch('/register', { // Замени на свой URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username: username, password: password })
-            });
-            const data = await response.json();
-            if (response.ok) {
-                alert('Регистрация прошла успешно!');
-                // Можно перенаправить пользователя или сделать что-то еще
-            } else {
-                alert(`Ошибка регистрации: ${data.detail}`); // detail - FastAPI стандарт
-            }
-        } catch (error) {
-            alert(`Произошла ошибка: ${error}`);
+            const data = {"username": username, "password": password};
+        fetch('http://127.0.0.1:8000/api/v1/users/register/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        // alert("Форма отправлена");
         }
-    } 
 })
