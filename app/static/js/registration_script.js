@@ -1,4 +1,3 @@
-
 let form = document.getElementById('registrationForm');
 form.addEventListener('submit', async function(event){
     event.preventDefault();
@@ -40,7 +39,7 @@ form.addEventListener('submit', async function(event){
 
     // ---------- ОТПРАВКА НА СЕРВЕР ----------
     if (isValid) {
-            const data = {"username": username, "password": password};
+        const data = {"username": username, "password": password};
         fetch('http://127.0.0.1:8000/api/v1/users/register/', {
             method: "POST",
             headers: {
@@ -48,6 +47,8 @@ form.addEventListener('submit', async function(event){
             },
             body: JSON.stringify(data)
         });
-        // alert("Форма отправлена");
         }
+        alert(`Добро пожаловать на борт, капитан ${username}!`)
+        window.location.href = '/my_projects';
+
 })

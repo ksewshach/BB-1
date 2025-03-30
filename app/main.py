@@ -1,24 +1,29 @@
 # main - запускает сервер, тут вся ключевая логика по запуску сервера
 
 import uvicorn
+import sqlite3
 from database import Base, engine
 from fastapi import FastAPI
-from models import UserDB
 from fastapi.staticfiles import StaticFiles
-from routers import unit_router, user_router
-from urls import user_url
+from starlette.middleware import Middleware
+from starlette.middleware.sessions import SessionMiddleware
+from routers import user_router # auth_router
+import urls
+import routers
 
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
+    # Middleware(SessionMiddleware, secret_key='your_secret_key'), # ОЧЕНЬ ВАЖНО поменять эту строку на настоящий секретный ключ, но не в коде.
     title="BookBook",
-    version="0.0.1"
+    version="0.0.1",
 )
 
 app.mount('/static', StaticFiles(directory='static'), name='static') # static - хтмл и ксс, подгружает статику из директории
-app.include_router(unit_router) # ???
-app.include_router(user_router)
-app.include_router(user_url) # ???
+app.include_router(routers.user_router)
+# app.include_router(routers.auth_router)
+app.include_router(urls.user_url)
+
 
 origins = ['*']
 
@@ -35,8 +40,8 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     # allow_methods=['GET', 'POST', 'PUT', 'DELETE'],
-    allow_methods=['*'], # Звёздочка разрешает всн запросы
-    allow_headers=['*']
+    allow_methods=["*"], # Звёздочка разрешает всн запросы
+    allow_headers=["*"]
 )
 
 

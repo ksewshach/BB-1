@@ -3,25 +3,27 @@
 {% block body %}
 
 
-{% comment %} <div id="register_container"> {% endcomment %}
+<div id="login_container">
     <h2>Вход</h2>
-
-    <form action="#">
+    
+    <form id='loginForm' action='/login' method="post">
 
         <div class="form-group">
-            <label for="email">Имя пользователя:</label>
-            <input type="email" id="username" name="username" required>
+            <label for="username">Имя пользователя:</label>
+            <input type="username" name="username" required>
             <div class="error" id="username-error"></div>
         </div>
 
         <div class="form-group">
             <label for="password">Пароль:</label>
-            <input type="password" id="password" name="password" required>
+            <input class='password' type="password" name="password" required>
             <div class="error" id="password-error"></div>
         </div>
-        <button type="submit" id="continue_jorney_button">Продолжить приключение!</button>
+
+        <button type="submit" class='start_button' id="continue_jorney_button">Продолжить приключение!</button>
     </form>
 </div>
+
 
 
 <!-- <footer>

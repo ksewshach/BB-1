@@ -1,4 +1,100 @@
 
+
+ФОРМА С ТОКЕНОМ: (MY_PROJECTS.HTML)
+<div id='login_container' class='form-group' style='display:none; background-color: rgb(255, 255, 255);'>
+        <h2>Новый проект</h2>
+        <form id='new_project_form' action="/my_projects" method="post">
+            <!-- {% csrf_token %} в Django необходимо добавлять CSRF-токен в формы, отправляемые методом POST
+            С ЭТИМ РАЗБЕЛЕМСЯ ПОТОМ (ДОБАВИТЬ ВРУЧНУЮ НА СЕРВЕРЕ, СМ.ЧАТ)
+            -->
+
+
+НЕКОТОРЫЙ СИНТАКСИС Form(...)
+(multipart/form-data - больше подходит когда нужно передать файлы, а более простой вариант будет всё-таки JSON)
+
+@user_router.post('/my_projects/', response_model=ProjectCreateSchema)
+def create_project(request: Request, title: str = Form(...), unit_titles: List[str] = Form(...), db: Session = Depends(get_db)):
+    project = ProjectDB(title=title)
+    # Создаём единицы
+    for unit_title in unit_titles:
+        unit = UnitDB(title=unit_title, project=project)
+        db.add(unit)
+        
+    db.add(project)
+    db.commit()
+    db.refresh(project)
+    return f'Создан проект с ID: {project.id}'
+
+
+
+
+
+
+
+ОТПРАВКА НА СЕРВЕР: NEW PROJECT SCRIPT
+
+if (isValid) {
+    document.getElementById('new_project_form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {};
+
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        fetch('http://127.0.0.1:8000/api/v1/users/create_unit/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = result.message;
+            if (result.success) {
+                form.reset();
+            }
+        })
+        .catch(error => {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = 'Произошла ошибка: ' + error;
+        });
+    });
+        alert("Форма отправлена");
+    }
+    
+
+
+
+
+
+
+
+@user_router.post('/create_project/')
+def create_project(request: Request, title: str = Form(...), unit_titles: List[str] = Form(...), db: Session = Depends(get_db)):
+    project = ProjectDB(title=title)
+    # Создаём единицы
+    for unit_title in unit_titles:
+        unit = UnitDB(title=unit_title, project=project)
+        db.add(unit)
+        
+    db.add(project)
+    db.commit()
+    db.refresh(project)
+    return f'Создан проект с ID: {project.id}'
+
+
+
+
+
+
+
+
+
     # (...primary_key=True, index=True - индекс вроде для последующего поиска? Но времени и места тратится на него немало. Говорят.)
 
         /* const data = {"username": username, "password": password};
@@ -25,6 +121,26 @@
         db.commit()
         db.refresh(new_user)  # Обновляем объект из базы данных
         return {"message": "Пользователь успешно зарегистрирован", "id": new_user.id, "username": new_user.username} # Возвращаем id
+
+
+
+
+----------- УДАЛЯЛКА ТАБЛИЦЫ???
+table_name = "_4789154_"
+with engine.connect() as connection:
+    connection.execute(f"DROP TABLE IF EXISTS {table_name};")
+
+
+
+    session = Session(engine)
+    new_project = UserDB(
+        username = project.username,
+        password = project.password,
+    )
+    session.add(new_project)
+    session.commit()
+    session.close()
+
 
 
 ---------------- СОЗДАВАЛКА ТАБЛИЦЫ --------------------------------/

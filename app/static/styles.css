@@ -60,6 +60,7 @@ h1 {
 input[type="username"],
 input[type="password"],
 input[type="title"], 
+input[type="project_title"], 
 input[type="description"] {
     width: 100%;
     padding: 10px;
@@ -142,6 +143,22 @@ footer {
     margin-bottom: 15px;
 }
 
+#login_container {
+    background-color: rgb(255, 255, 255, 0.7);
+    padding: 2em;
+    padding-top: 1em;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20em;
+    height: 19em;
+}
+
 #new_project_div {
     background-color: #fff;
     padding: 2em;
@@ -154,7 +171,7 @@ footer {
 }
 
 #register_container {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255, 0.7);
     padding: 2em;
     padding-top: 1em;
     margin: auto;
@@ -166,7 +183,7 @@ footer {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 20em;
-    height: 26em;
+    height: 23em;
 }
 
 #section_about {
@@ -232,20 +249,18 @@ footer {
 }
 
 #continue_jorney_button {
-    text-align: center;
-    font-weight: bold;
+    background-color: rgb(255, 136, 0);
+    color: white;
+}
+
+#continue_jorney_button:hover {
     background-image: url('https://i.postimg.cc/4x5tSH3g/2.jpg');
     background-size: 100%;
-    background-position-y: 90%;
-    color: rgb(0, 0, 0);
-    padding: 3px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 66%;
-    height: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-position-y: 18%;
+    box-shadow: #000000;
     text-shadow: 0 0 8px #000000;
+
+
 }
 
 #new_project_button {
